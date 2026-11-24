@@ -80,6 +80,21 @@ const WORKOUT_CODES={
       {id:'lateral',weight:'5kg/tay',sets:2,target:'12–15',rir:'2–3',rest:'90 giây',hint:'Tùy chọn nếu vai hồi phục; không tới thất bại.'},
       {id:'walk',weight:'Nhẹ, đi bộ thoải mái',sets:1,target:'10',rir:'',rest:'',hint:'Tùy chọn, không cố tăng tốc nếu chân chưa hồi phục.'}
     ]
+  },
+  'G261130-LB':{
+    date:'2026-11-30',plan:'legs',title:'Thứ Hai · LOWER BODY',
+    note:'Sau LOWER 23/11: Squat 12/12/12, RDL 10/10/10, Hip Thrust 12/11 (RIR 0), Calf 20/15 (RIR 0–1). Giảm gắng sức, không tăng tải trong tuần này. Chỉ tập đủ nếu đã hồi phục sau cầu lông Thứ Bảy.',
+    main:[
+      {id:'squatmachine',weight:'15kg/bên (xác nhận tạ thực tế)',sets:3,target:'8–12',rir:'2–3',rest:'2–3 phút',hint:'Bài chủ lực. Mốc 23/11: 12/12/12, RIR cuối 1–2 (chưa xác nhận tạ). Giữ form, dừng khi còn 2–3 reps, không cố phá kỷ lục.'},
+      {id:'rdl',weight:'5kg/bên + thanh đòn',sets:2,target:'8–10',rir:'2–3',rest:'2–3 phút',hint:'Giảm từ 3 set hôm 23/11 xuống 2 set để hồi phục tốt hơn. Hạ có kiểm soát, không kéo đến kiệt sức.'},
+      {id:'hip',weight:'50kg tổng',sets:2,target:'10–12',rir:'2–3',rest:'2 phút',hint:'Hôm trước 12/11, set cuối hết sức. Lần này dừng ở RIR 2–3, có thể chỉ 10 reps/set.'},
+      {id:'calf',weight:'70kg theo máy',sets:2,target:'12–15',rir:'2–3',rest:'90–120 giây',hint:'Hôm trước 20/15, set cuối RIR 0–1. Giữ mức tạ, không ép 20 reps; tập chậm và đủ biên độ.'},
+      {id:'plank',weight:'Không tạ',sets:2,target:'45–60',rir:'',rest:'60 giây',hint:'23/11 đạt 70/45 giây. Ưu tiên thân người ổn định, không cần cố vượt 60 giây.'}
+    ],
+    optional:[
+      {id:'stepdown',weight:'Không tạ',sets:1,target:'6–8 mỗi chân',rir:'',rest:'60 giây',hint:'Chỉ thực hiện nếu gối phải không đau và chân chưa mỏi; bục 10–15cm, hạ chậm, không thêm hiệp để bù.'},
+      {id:'abduction',weight:'Thử tải nhẹ',sets:2,target:'12–15',rir:'3–4',rest:'60–90 giây',hint:'Tùy chọn, chưa cần thêm nếu chân hồi phục chậm hoặc vừa đánh cầu lông cường độ cao.'}
+    ]
   }
 };
 function spec(id,plan){const b=find(id);if(!b)return null;const x={...b,...PRESETS[id]};if(id==='row'){x.sets=plan==='push'?2:3;x.role=plan==='pull'?'CHỦ LỰC':'CHÍNH';x.rir=plan==='pull'?'2':'2–3';x.rest=plan==='push'?'90–120 giây':'2 phút'}if(!x.rir&&x.unit==='reps'&&!['balance','stepdown'].includes(id))x.rir=plan==='legs'?'3':'2–3';return x}
