@@ -137,7 +137,7 @@ function migrateRetiredRearDeltExercise(){
       if(hasInput(item)){
         const oldSets=item.sets.map((x,j)=>'set '+(j+1)+': '+(x.value||'—')+' reps, RIR '+(x.rir||'—')+(x.done?' (xong)':'')).join('; ');
         const history='Bài cũ ('+retired[item.id]+'): '+oldSets+(item.weight?'; tạ '+item.weight:'')+(item.notes?'; ghi chú '+item.notes:'');
-        current.summary.notes=[current.summary.notes,history].filter(Boolean).join('\\n');
+        current.summary.notes=[current.summary.notes,history].filter(Boolean).join('\n');
       }
       const keepUid=item.uid,keepKind=item.kind,keepEnabled=item.enabled;
       const fresh=makeItem('bentfly',current.plan,keepKind);
