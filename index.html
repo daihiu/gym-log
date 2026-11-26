@@ -44,15 +44,15 @@ const GROUPS=['Ngực','Lưng','Xô','Vai','Tay trước','Tay sau','Đùi trư�
 const BASE=[
 ['bench','Barbell Bench Press','Ngực','35kg tổng','8–12',3,'reps','flatdb'],['flatdb','Flat Dumbbell Press','Ngực','10kg/tay','8–12',3],['incline','Incline DB Press','Ngực','10kg/tay','10–12',2,'reps','inclinemachine'],['inclinemachine','Incline Chest Press Machine','Ngực','Tạ vừa sức','10–12',2],['pec','Pec Deck Fly','Ngực','10kg','12–15',2,'reps','cablefly'],['cablefly','Cable Chest Fly','Ngực','Tạ nhẹ','12–15',2],
 ['row','Seated Cable Row','Lưng','37,5kg','10–12',3,'reps','rowmachine'],['rowmachine','Unilateral Row Machine','Lưng','30kg/bên','10–12 mỗi bên',3],['lat','Lat Pulldown','Xô','37,5kg','10–12',2,'reps','pullup'],['pullup','Assisted Pull-up','Xô','Trợ lực phù hợp','6–10',2],
-['shoulder','DB Shoulder Press','Vai','10kg/tay','8–12',2,'reps','shouldermachine'],['shouldermachine','Shoulder Press Machine','Vai','Tạ vừa sức','10–12',2],['lateral','DB Lateral Raise','Vai','5kg/tay','12–15',2,'reps','cablelateral'],['cablelateral','Cable Lateral Raise','Vai','Tạ nhẹ','12–15',2],['face','Face Pull','Vai','15–20kg','12–15',2,'reps','reversefly'],
+['shoulder','DB Shoulder Press','Vai','10kg/tay','8–12',2,'reps','shouldermachine'],['shouldermachine','Shoulder Press Machine','Vai','Tạ vừa sức','10–12',2],['lateral','DB Lateral Raise','Vai','5kg/tay','12–15',2,'reps','cablelateral'],['cablelateral','Cable Lateral Raise','Vai','Tạ nhẹ','12–15',2],['face','Face Pull','Vai','15–20kg','12–15',2,'reps','bentfly'],
 ['ez','EZ Bar Curl','Tay trước','15kg','10–12',2,'reps','hammer'],['hammer','DB Hammer Curl','Tay trước','5kg/tay','10–12',2],['pushdown','Triceps Pushdown','Tay sau','20kg','10–15',2,'reps','overheadtri'],['overheadtri','Overhead DB Triceps Extension','Tay sau','5kg','10–12',2],
 ['squat','Barbell Back Squat','Đùi trước','10kg/bên + thanh đòn','8–10',2,'reps','squatmachine'],['squatmachine','Squat Machine','Đùi trước','15kg/bên','10–12',2],['legpress','Leg Press','Đùi trước','60–70kg','10–12',1,'reps','lunge'],['lunge','Reverse Lunge','Đùi trước','Không tạ','8 mỗi chân',1],['boxsquat','Bodyweight Box Squat','Đùi trước','Không tạ','10',2],
 ['rdl','Barbell Romanian Deadlift','Đùi sau','5kg/bên + thanh đòn','8–10',2,'reps','dbrdl'],['dbrdl','Dumbbell RDL','Đùi sau','12,5kg/tay','8–10',2],['legcurl','Leg Curl','Đùi sau','30kg','10–12',2,'reps','slidingcurl'],['slidingcurl','Sliding Leg Curl','Đùi sau','Trọng lượng cơ thể','8–10',2],
 ['hip','Hip Thrust','Mông','50kg tổng','10–12',2,'reps','glute'],['glute','Glute Bridge','Mông','Không tạ hoặc nhẹ','12–15',2],['calf','Calf Raise trên Squat Machine','Bắp chân','70kg theo máy','12–15',2,'reps','singlecalf'],['singlecalf','Single-leg Calf Raise','Bắp chân','Không tạ','10–15 mỗi chân',2],
 ['stepdown','Step Down bục thấp','Chân / thăng bằng','Không tạ','6–8 mỗi chân',1],['balance','Single-leg Balance','Chân / thăng bằng','Không tạ','30 mỗi chân',2,'giây'],['plank','Plank','Core / bụng','Không tạ','45–60',2,'giây','deadbug'],['deadbug','Dead Bug','Core / bụng','Không tạ','10 mỗi bên',2],['walk','Đi bộ nhanh','Cardio','Nhẹ–vừa','10–15',1,'phút'],['bike','Đạp xe nhẹ / hồi phục','Cardio','Nhẹ','10–15',1,'phút']
-,['chestrow','Chest-supported Row','Lưng','30kg/bên','10–12 mỗi bên',2],['reversefly','Chest-supported Dumbbell Reverse Fly','Vai','2–3kg/tay','12–15',2],['abduction','Hip Abduction','Mông','20–30kg','12–15',2],['lightpress','Leg Press nhẹ','Đùi trước','50–60kg','10',2,'reps','boxsquat'],['lightcurl','Leg Curl nhẹ','Đùi sau','25–30kg','10–12',2,'reps','slidingcurl']
+,['chestrow','Chest-supported Row','Lưng','30kg/bên','10–12 mỗi bên',2],['bentfly','Bent-over DB Reverse Fly','Vai','2–3kg/tay (thử tải)','12–15',2],['abduction','Hip Abduction','Mông','20–30kg','12–15',2],['lightpress','Leg Press nhẹ','Đùi trước','50–60kg','10',2,'reps','boxsquat'],['lightcurl','Leg Curl nhẹ','Đùi sau','25–30kg','10–12',2,'reps','slidingcurl']
 ].map(([id,name,group,weight,target,sets,unit='reps',alt=''])=>({id,name,group,weight,target,sets,unit,alt}));
-const PLANS={legs:{label:'Thứ Hai · LOWER BODY',tab:'T2 · Lower',ids:['squatmachine','rdl','hip','calf','plank'],note:'50–65 phút · 9 set chân + 2 core · RIR 3 giai đoạn đầu'},push:{label:'Thứ Ba · UPPER A',tab:'T3 · Upper A',ids:['bench','incline','lat','row','shoulder','lateral','pushdown'],note:'60–75 phút · 15 hiệp chính · Push focus · RIR 2–3'},pull:{label:'Thứ Năm · UPPER B + LOWER LIGHT',tab:'T5 · Upper B',ids:['row','lat','pec','reversefly','ez'],note:'65–75 phút · 11 hiệp thân trên · Chân nhẹ có điều kiện, RIR 4–5'},custom:{label:'TỰ CHỌN',tab:'Tự chọn',ids:[],note:'Chọn bài từ thư viện để tạo buổi tập riêng.'}};
+const PLANS={legs:{label:'Thứ Hai · LOWER BODY',tab:'T2 · Lower',ids:['squatmachine','rdl','hip','calf','plank'],note:'50–65 phút · 9 set chân + 2 core · RIR 3 giai đoạn đầu'},push:{label:'Thứ Ba · UPPER A',tab:'T3 · Upper A',ids:['bench','incline','lat','row','shoulder','lateral','pushdown'],note:'60–75 phút · 15 hiệp chính · Push focus · RIR 2–3'},pull:{label:'Thứ Năm · UPPER B + LOWER LIGHT',tab:'T5 · Upper B',ids:['row','lat','pec','bentfly','ez'],note:'65–75 phút · 11 hiệp thân trên · Chân nhẹ có điều kiện, RIR 4–5'},custom:{label:'TỰ CHỌN',tab:'Tự chọn',ids:[],note:'Chọn bài từ thư viện để tạo buổi tập riêng.'}};
 const SUGGESTED={legs:['stepdown','abduction'],push:['pec','walk'],pull:['lightpress','lightcurl','lateral','balance','walk','bike'],custom:[]};
 const PRESETS={
 squatmachine:{weight:'15kg/bên',target:'8–12',sets:3,alt:'squat',role:'CHỦ LỰC',rir:'3',rest:'2–3 phút',hint:'Ưu tiên Squat Machine; kiểm soát kỹ thuật.'},
@@ -60,7 +60,7 @@ rdl:{rir:'3',rest:'2–3 phút'},hip:{rir:'3',rest:'2 phút',hint:'Mốc 60kg ×
 bench:{weight:'10kg/bên + thanh đòn',role:'CHỦ LỰC',rir:'2',rest:'2–3 phút',hint:'40kg tổng nếu đòn 20kg. Mốc 8/8/8.'},
 incline:{rest:'2 phút',hint:'Mốc 10/10'},lat:{rest:'2 phút',hint:'Mốc 12/8'},row:{rest:'2 phút',hint:'Neutral Grip (tay song song, lòng bàn tay hướng vào nhau). Giữ cố định tay nắm.',alt:'rowmachine',alt2:'chestrow'},
 shoulder:{weight:'7,5–10kg/tay',rest:'2 phút',hint:'Mốc 10kg/tay × 10/7; giảm tải nếu mỏi.'},shouldermachine:{target:'8–12'},lateral:{rest:'90 giây',hint:'Mốc 15/12'},pushdown:{rest:'90–120 giây',hint:'Mốc 14/9; có thể giảm còn 15kg nếu form không chuẩn.'},
-pec:{rest:'90 giây',hint:'Mốc 12/12'},reversefly:{weight:'2–3kg/tay (thử tải)',sets:2,target:'12–15',rir:'2–3',rest:'90–120 giây',hint:'Nằm sấp tựa ngực trên ghế nghiêng, khuỷu hơi cong, nâng tay sang ngang bằng vai sau; giữ vai không nhún, không vung tạ.'},ez:{rest:'90–120 giây',hint:'Mốc 12/10'},
+pec:{rest:'90 giây',hint:'Mốc 12/12'},bentfly:{weight:'2–3kg/tay (thử tải)',sets:2,target:'12–15',rir:'2–3',rest:'90–120 giây',hint:'Chỉ cần hai tạ đơn. Đẩy hông ra sau, gập thân khoảng 45–70°, giữ lưng trung lập và khuỷu hơi cong; mở tay sang hai bên, không nhún vai hoặc lấy đà.'},ez:{rest:'90–120 giây',hint:'Mốc 12/10'},
 lightpress:{role:'CÓ ĐIỀU KIỆN',rir:'4–5',rest:'90–120 giây',hint:'Chỉ tập nếu chân hồi phục và gối không đau; hai tuần đầu chỉ thử bài này.'},lightcurl:{role:'CÓ ĐIỀU KIỆN',rir:'4–5',rest:'90 giây',hint:'Chỉ thêm sau hai tuần đầu nếu Leg Press nhẹ không ảnh hưởng cầu lông.'},stepdown:{hint:'Bục 10–15cm, hạ 2–3 giây, gối hướng theo bàn chân; bỏ nếu đau.'},abduction:{hint:'Chưa cần thêm trong hai tuần đầu nếu hồi phục chậm; mở đùi có kiểm soát, giữ 1 giây.'},balance:{hint:'Đứng gần điểm vịn, 30 giây mỗi chân.'},walk:{weight:'6km/h',hint:'Cường độ vừa, vẫn nói chuyện được; ưu tiên cardio hơn thêm tạ.'}
 };
 // Các mã ngắn được ChatGPT đăng ký tại đây. Web nạp nguyên giáo án theo mã, không gọi server khi tập.
@@ -71,7 +71,7 @@ const WORKOUT_CODES={
     main:[
       {id:'row',weight:'37,5kg',sets:3,target:'10–12',rir:'2–3',rest:'2–3 phút',hint:'Tay nắm neutral grip đang dùng. Kéo có kiểm soát, không cố 12 reps nếu mất RIR 2.'},
       {id:'lat',weight:'30kg',sets:2,target:'12–15',rir:'2–3',rest:'2 phút',hint:'30kg là mức thực tế buổi 24/11 (15/15); giữ vai ổn định, không lấy đà.'},
-      {id:'reversefly',weight:'2–3kg/tay (thử tải)',sets:2,target:'12–15',rir:'2–3',rest:'90–120 giây',hint:'Vai sau: nằm sấp tựa ngực vào ghế nghiêng, tay hơi gập, mở sang ngang có kiểm soát; tránh vung tạ.'},
+      {id:'bentfly',weight:'2–3kg/tay (thử tải)',sets:2,target:'12–15',rir:'2–3',rest:'90–120 giây',hint:'Vai sau: không cần ghế hay máy. Gập hông 45–70°, lưng trung lập, khuỷu hơi gập, mở tay sang ngang có kiểm soát.'},
       {id:'pec',weight:'10kg',sets:2,target:'12–15',rir:'2–3',rest:'90–120 giây',hint:'Chỉ thực hiện nếu ngực đã hồi phục từ Bench/Incline hôm T3; mỏi rõ thì bỏ bài.'},
       {id:'ez',weight:'15kg',sets:2,target:'8–10',rir:'2–3',rest:'90–120 giây',hint:'T3 đã tập thêm EZ Curl 15kg 15/10; bỏ hoặc giảm tạ nếu tay trước/cẳng tay còn mỏi.'}
     ],
@@ -129,27 +129,32 @@ let active=current.plan;
 // thay vì gán nhầm thành tích đó cho một động tác khác.
 function migrateRetiredRearDeltExercise(){
   if(!Array.isArray(current.items))return;
+  const retired={reversepec:'Reverse Pec Deck',reversefly:'Chest-supported DB Reverse Fly'};
   let changed=false;
+  current.summary=current.summary||{};
   for(const item of current.items){
-    if(item.id==='reversepec'){
+    if(retired[item.id]){
       if(hasInput(item)){
-        const legacy=item.sets.map((x,j)=>'set '+(j+1)+': '+(x.value||'—')+' reps, RIR '+(x.rir||'—')+(x.done?' (xong)':'')).join('; ');
-        const log='Bài đã bỏ khỏi giáo án (Reverse Pec Deck): '+legacy+(item.weight?'; tạ '+item.weight:'')+(item.notes?'; ghi chú '+item.notes:'');
-        current.summary=current.summary||{};
-        current.summary.notes=[current.summary.notes,log].filter(Boolean).join('\n');
+        const oldSets=item.sets.map((x,j)=>'set '+(j+1)+': '+(x.value||'—')+' reps, RIR '+(x.rir||'—')+(x.done?' (xong)':'')).join('; ');
+        const history='Bài cũ ('+retired[item.id]+'): '+oldSets+(item.weight?'; tạ '+item.weight:'')+(item.notes?'; ghi chú '+item.notes:'');
+        current.summary.notes=[current.summary.notes,history].filter(Boolean).join('\\n');
       }
-      const priorEnabled=item.enabled,priorKind=item.kind,priorUid=item.uid;
-      const next=makeItem('reversefly',current.plan,priorKind);
-      next.enabled=priorEnabled;
-      next.uid=priorUid;
-      next.instructions={weight:'2–3kg/tay (thử tải)',rir:'2–3',rest:'90–120 giây',hint:'Nằm sấp tựa ngực vào ghế nghiêng, tập vai sau chậm và có kiểm soát.'};
-      Object.assign(item,next);
+      const keepUid=item.uid,keepKind=item.kind,keepEnabled=item.enabled;
+      const fresh=makeItem('bentfly',current.plan,keepKind);
+      fresh.uid=keepUid;
+      fresh.enabled=keepEnabled;
+      fresh.instructions={weight:'2–3kg/tay (thử tải)',rir:'2–3',rest:'90–120 giây',hint:'Không cần ghế. Gập hông, giữ lưng trung lập, mở tay sang ngang bằng vai sau.'};
+      Object.assign(item,fresh);
       changed=true;
-    }else if(item.originalId==='reversepec'){
-      item.originalId='reversefly';
+    }else if(retired[item.originalId]){
+      item.originalId='bentfly';
       changed=true;
     }
-    if(item.variants?.reversepec){delete item.variants.reversepec;changed=true}
+    if(item.variants){
+      for(const id of Object.keys(retired)){
+        if(item.variants[id]){delete item.variants[id];changed=true}
+      }
+    }
   }
   if(changed)write(CURRENT_KEY,current);
 }
